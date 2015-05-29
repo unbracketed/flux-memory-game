@@ -1,7 +1,7 @@
 import React from 'react'
 import AltContainer from 'alt/AltContainer'
 import GameStore from './store'
-import _gridCss from './grid.css'
+import _style from './style.css'
 
 
 const Grid = React.createClass({
@@ -13,39 +13,32 @@ const Grid = React.createClass({
     const gridState = this.props.gridState
 
     return (
-      <div>
+
+      <span className="grid">
         {gridState.map((row, rowIdx) => {
-
-          return (
-            <div className="Grid">
-
-              {row.map((col, colIdx) => {
-                  let cell = null
-                  if (col) {
-                    cell = (
-                      <img
-                        width="100%"
-                        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/newgirl-01.svg"
-
-                      />
-                    )
-                  } else {
-                    cell = (
-                      <p>?</p>
-                    )
-                  }
-
-                  return (
-                    <div className="Grid-cell" onClick={this.handleClick.bind(this, rowIdx, colIdx)}>
-                      {cell}
-                    </div>
-                  )
-                }
-              )}
-            </div>
-          )
+          return row.map((col, colIdx) => {
+            if (col) {
+              return (
+                <span
+                  className="tile--1of2"
+                  onClick={this.handleClick.bind(this, rowIdx, colIdx)}>
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/newgirl-01.svg"/>
+                </span>
+              )
+            } else {
+              return (
+                <span
+                  className="tile--1of2"
+                  onClick={this.handleClick.bind(this, rowIdx, colIdx)}
+                >
+                  ?
+                </span>
+              )
+            }
+          })
         })}
-      </div>
+      </span>
+
     )
   }
 
