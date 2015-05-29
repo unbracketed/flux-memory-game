@@ -1,4 +1,7 @@
 import React from 'react'
+import GridContainer from './components'
 
 
-React.render(<div>Memory Game...</div>, document.body)
+
+
+React.render(<GridContainer/>, document.body)
