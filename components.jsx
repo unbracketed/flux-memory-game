@@ -47,16 +47,35 @@ const Grid = React.createClass({
 })
 
 
-const GridContainer = React.createClass({
-  render: function () {
-    return (
-      <AltContainer store={GameStore}>
+const Controls = React.createClass({
 
-        <button>New Game</button>
+  handleNewGame: function () {
+    GameActions.resetGame()
+  },
+
+  render: function () {
+
+      return (
+      <div>
+        <button onClick={this.handleNewGame}>New Game</button>
         <button>2x2</button>
         <button>3x3</button>
         <button>4x4</button>
         <button>5x5</button>
+
+        {this.props.gameComplete ? <span>Hooray</span> : ''}
+      </div>
+      )
+  }
+})
+
+
+const GridContainer = React.createClass({
+  render: function () {
+    console.log('GridCon', this)
+    return (
+      <AltContainer store={GameStore}>
+        <Controls/>
 
         <Grid/>
       </AltContainer>

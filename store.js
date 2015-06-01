@@ -10,9 +10,11 @@ class GameStore {
       {state: 'closed', value: 'girl'},
       {state: 'closed', value: 'girl'},
     ]
+    this.gameComplete = false
 
     this.bindListeners({
-      handleUpdateCards: GameActions.TOGGLE_CARD
+      handleUpdateCards: GameActions.TOGGLE_CARD,
+      handleReset: GameActions.RESET_GAME
     })
 
     this.exportPublicMethods({
@@ -22,7 +24,22 @@ class GameStore {
 
   handleUpdateCards(cards) {
     console.log('updateCards', cards)
+
+    //check for end of game state
+    if (_.every(cards, {state: 'matched'})) {
+      this.gameComplete = true
+    }
     this.cards = cards
+  }
+
+  handleReset() {
+    this.cards = [
+      {state: 'closed', value: 'girl'},
+      {state: 'closed', value: 'girl'},
+      {state: 'closed', value: 'girl'},
+      {state: 'closed', value: 'girl'},
+    ]
+    this.gameComplete = false
   }
 
   getCards() {
