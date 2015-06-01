@@ -22,7 +22,8 @@ const Grid = React.createClass({
 
             const cardClass = {
               card: true,
-              flipped: card.state === 'matched' || card.state === 'open',
+              flipped: card.state === 'matched' || card.state === 'open' || card.state === 'did-not-match',
+              noMatch: card.state === 'did-not-match',
               matched: card.state === 'matched'
             }
             console.log('classNames', cardClass)

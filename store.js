@@ -6,14 +6,15 @@ class GameStore {
     this.gridSize = 2
     this.cards = [
       {state: 'closed', value: 'girl'},
-      {state: 'closed', value: 'girl'},
-      {state: 'closed', value: 'girl'},
+      {state: 'closed', value: 'boy'},
+      {state: 'closed', value: 'boy'},
       {state: 'closed', value: 'girl'},
     ]
     this.gameComplete = false
 
     this.bindListeners({
       handleUpdateCards: GameActions.TOGGLE_CARD,
+      handleUnmatchedCards: GameActions.CLOSE_UNMATCHED_CARDS,
       handleReset: GameActions.RESET_GAME
     })
 
@@ -29,6 +30,11 @@ class GameStore {
     if (_.every(cards, {state: 'matched'})) {
       this.gameComplete = true
     }
+    this.cards = cards
+  }
+
+  handleUnmatchedCards(cards) {
+    console.log('handleCloseOpenCards')
     this.cards = cards
   }
 

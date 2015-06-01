@@ -15,7 +15,11 @@ class GameActions {
             card.state = 'matched'
             openCard.state = 'matched'
           } else {
-            openCard.state = 'closed'
+            openCard.state = 'did-not-match'
+            card.state = 'did-not-match'
+
+            //close the cards in one second
+            setTimeout(this.actions.closeUnmatchedCards, 1000)
           }
       } else {
         card.state = 'open'
@@ -25,6 +29,14 @@ class GameActions {
     }
 
 
+    this.dispatch(cards)
+  }
+
+  closeUnmatchedCards() {
+    console.log('closeUnmatchedCards')
+    const cards = this.alt.stores.GameStore.getCards()
+    const openCards = _.filter(cards, {state: 'did-not-match'})
+    _.forEach(openCards, card => {card.state = 'closed'})
     this.dispatch(cards)
   }
 
