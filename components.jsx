@@ -3,7 +3,9 @@ import AltContainer from 'alt/AltContainer'
 import classNames from 'classnames'
 import GameStore from './store'
 import GameActions from './actions'
-import _style from './style.css'
+import _normalize from './styles/Skeleton-2.0.4/css/normalize.css'
+import _skeleton from './styles/Skeleton-2.0.4/css/skeleton.css'
+import _style from './styles/style.css'
 
 
 const Grid = React.createClass({
@@ -58,12 +60,12 @@ const Controls = React.createClass({
 
       return (
       <div>
-        <button onClick={this.handleNewGame}>New Game</button>
-        <button>2x2</button>
-        <button>3x3</button>
-        <button>4x4</button>
-        <button>5x5</button>
-
+        <button
+          className="button-primary"
+          onClick={this.handleNewGame}
+        >
+          New Game
+        </button>
         {this.props.gameComplete ? <span>Hooray</span> : ''}
       </div>
       )
@@ -77,7 +79,6 @@ const GridContainer = React.createClass({
     return (
       <AltContainer store={GameStore}>
         <Controls/>
-
         <Grid/>
       </AltContainer>
     )

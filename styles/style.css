@@ -1,3 +1,7 @@
+body {
+  background: gray
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +10,6 @@
 .tile--1of2 {
   flex: 0 1 calc(100% * 1/2 - 0.5% * 2);
   margin: 0.5%;
-  background: blue
 }
 
 .container {
