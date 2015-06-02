@@ -40,8 +40,8 @@ class GameStore {
 
   handleReset() {
     this.cards = [
-      {state: 'closed', value: 'girl'},
-      {state: 'closed', value: 'girl'},
+      {state: 'closed', value: 'boy'},
+      {state: 'closed', value: 'boy'},
       {state: 'closed', value: 'girl'},
       {state: 'closed', value: 'girl'},
     ]

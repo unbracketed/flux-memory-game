@@ -7,6 +7,8 @@ import _normalize from './styles/Skeleton-2.0.4/css/normalize.css'
 import _skeleton from './styles/Skeleton-2.0.4/css/skeleton.css'
 import _style from './styles/style.css'
 
+import {Girl, Boy} from './card-components/default'
+
 
 const Grid = React.createClass({
   handleClick: function (idx, e) {
@@ -36,7 +38,7 @@ const Grid = React.createClass({
                   <div className={classNames(cardClass)}>
                     <div className="front">?</div>
                     <div className="back">
-                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-80/newgirl-01.svg"/>
+                      {card.value === 'girl' ? <Girl/> : <Boy/>}
                     </div>
                   </div>
                 </div>
