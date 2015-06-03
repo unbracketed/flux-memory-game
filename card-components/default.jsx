@@ -2,6 +2,7 @@ import React from 'react'
 
 
 export const Girl = React.createClass({
+  displayName: 'Girl',
   render: function () {
     return (
       <svg version="1.1" x="0px" y="0px"
@@ -36,6 +37,7 @@ export const Girl = React.createClass({
 })
 
 export const Boy = React.createClass({
+  displayName: 'Boy',
   render: function () {
     return (
       <svg version="1.1" x="0px" y="0px"
@@ -90,6 +92,7 @@ export const Boy = React.createClass({
 // })
 
 export const Pig = React.createClass({
+  displayName: 'Pig',
   render: function () {
     return (
       <svg version="1.1" x="0px" y="0px"
@@ -216,6 +219,7 @@ export const Pig = React.createClass({
 
 
 export const AnotherPig = React.createClass({
+  displayName: 'AnotherPig',
   render: function () {
     return (
       <svg version="1.1"x="0px" y="0px"
@@ -509,6 +513,7 @@ export const AnotherPig = React.createClass({
 
 
 export const Apple = React.createClass({
+  displayName: 'Apple',
   render: function () {
     return (
       <svg version="1.1" x="0px" y="0px"

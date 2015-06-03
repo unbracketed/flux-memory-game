@@ -1,16 +1,12 @@
 import alt from './alt'
 import GameActions from './actions'
+import getCards from './card-themes/bologne'
 
 class GameStore {
   constructor() {
-    this.gridSize = 2
-    this.cards = [
-      {state: 'closed', value: 'girl'},
-      {state: 'closed', value: 'boy'},
-      {state: 'closed', value: 'boy'},
-      {state: 'closed', value: 'girl'},
-    ]
+    this.numberOfPairs = 2
     this.gameComplete = false
+    this.cards = this.initCards(this.numberOfPairs)
 
     this.bindListeners({
       handleUpdateCards: GameActions.TOGGLE_CARD,
@@ -21,6 +17,17 @@ class GameStore {
     this.exportPublicMethods({
       getCards: this.getCards
     })
+  }
+
+  initCards(numPairs) {
+    let cards = getCards(numPairs)
+    return _.map(cards, item => {
+      return {
+        state: 'closed',
+        value: item.displayName,
+        component: item}
+    })
+
   }
 
   handleUpdateCards(cards) {
@@ -39,12 +46,7 @@ class GameStore {
   }
 
   handleReset() {
-    this.cards = [
-      {state: 'closed', value: 'boy'},
-      {state: 'closed', value: 'boy'},
-      {state: 'closed', value: 'girl'},
-      {state: 'closed', value: 'girl'},
-    ]
+    this.cards = this.initCards(this.numberOfPairs)
     this.gameComplete = false
   }
 
