@@ -1,16 +1,19 @@
 import alt from './alt'
 import GameActions from './actions'
-import getCards from './card-themes/bologne'
+import {createCards, numItems} from './card-themes/bologne'
 
 class GameStore {
   constructor() {
-    this.numberOfPairs = 2
+    this.numberOfPairs = 3
+    this.maxPairs = numItems
     this.gameComplete = false
     this.cards = this.initCards(this.numberOfPairs)
 
     this.bindListeners({
       handleUpdateCards: GameActions.TOGGLE_CARD,
       handleUnmatchedCards: GameActions.CLOSE_UNMATCHED_CARDS,
+      handleDecreaseCards: GameActions.DECREASE_CARDS,
+      handleIncreaseCards: GameActions.INCREASE_CARDS,
       handleReset: GameActions.RESET_GAME
     })
 
@@ -20,7 +23,7 @@ class GameStore {
   }
 
   initCards(numPairs) {
-    let cards = getCards(numPairs)
+    let cards = createCards(numPairs)
     return _.map(cards, item => {
       return {
         state: 'closed',
@@ -43,6 +46,16 @@ class GameStore {
   handleUnmatchedCards(cards) {
     console.log('handleCloseOpenCards')
     this.cards = cards
+  }
+
+  handleDecreaseCards() {
+    this.numberOfPairs -= 1
+    this.cards = this.initCards(this.numberOfPairs)
+  }
+
+  handleIncreaseCards() {
+    this.numberOfPairs += 1
+    this.cards = this.initCards(this.numberOfPairs)
   }
 
   handleReset() {

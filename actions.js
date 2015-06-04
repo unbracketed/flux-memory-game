@@ -32,6 +32,14 @@ class GameActions {
     this.dispatch(cards)
   }
 
+  decreaseCards() {
+    this.dispatch()
+  }
+
+  increaseCards() {
+    this.dispatch()
+  }
+
   closeUnmatchedCards() {
     console.log('closeUnmatchedCards')
     const cards = this.alt.stores.GameStore.getCards()
