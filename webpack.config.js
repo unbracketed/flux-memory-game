@@ -16,5 +16,7 @@ module.exports = getConfig({
   // get a fresh folder. Usually you want this
   // but since it's destructive we make it
   // false by default
-  clearBeforeBuild: true
+  clearBeforeBuild: true,
+
+  port: process.env.PORT || 3000
 })
