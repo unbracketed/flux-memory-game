@@ -45,7 +45,7 @@ const Grid = React.createClass({
 
                 <div className={classNames(containerClasses)} onClick={this.handleClick.bind(this, idx)}>
                   <div className={classNames(cardClasses)}>
-                    <div className="front">?</div>
+                    <div className="front"><span className="numberCircle">?</span></div>
                     <div className="back">
                       <card.component/>
                     </div>
